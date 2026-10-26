@@ -12,6 +12,7 @@ export const DEMO_IDS = {
 } as const;
 
 export const FEE_RATE = 0.08;
+export const CAR_PHOTO_EXT = "svg";
 /** Published on the sign-in page. Seeded demo accounts have no stored hash and accept only this. */
 export const DEMO_PASSWORD = "Demo1234";
 
@@ -27,29 +28,30 @@ export function seedUsers(now = new Date()): User[] {
   ];
 }
 
-type CarSeed = Omit<Car, "createdAt" | "photos" | "unavailableDates" | "city"> & { photoIdx: number; unavailableOffsets?: number[] };
+type CarSeed = Omit<Car, "createdAt" | "photos" | "unavailableDates" | "city"> & { unavailableOffsets?: number[] };
 
 const CARS: CarSeed[] = [
-  { id: "car-corolla-bole", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "Corolla", year: 2020, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Bole", latitude: 8.9806, longitude: 38.7578, pricePerDay: 2800, description: "A reliable, fuel-efficient city sedan. Clean interior, working AC, and easy pickup near Bole Medhanialem.", status: "approved", popularity: 92, photoIdx: 1, unavailableOffsets: [40, 41] },
-  { id: "car-vitz-piassa", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "Vitz", year: 2017, transmission: "Manual", fuel: "Petrol", seats: 4, neighbourhood: "Piassa", latitude: 9.0345, longitude: 38.7469, pricePerDay: 1800, description: "A small, nimble hatchback that is easy to park in the old city. Great for tight streets and short trips.", status: "approved", popularity: 61, photoIdx: 2 },
-  { id: "car-rav4-cmc", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "RAV4", year: 2021, transmission: "Automatic", fuel: "Hybrid", seats: 5, neighbourhood: "CMC", latitude: 9.0189, longitude: 38.8124, pricePerDay: 5200, description: "Comfortable hybrid SUV with plenty of boot space, ideal for weekend trips out of the city.", status: "approved", popularity: 88, photoIdx: 3 },
-  { id: "car-hilux-kazanchis", ownerId: DEMO_IDS.ownerDawit, make: "Toyota", model: "Hilux", year: 2019, transmission: "Manual", fuel: "Diesel", seats: 5, neighbourhood: "Kazanchis", latitude: 9.0107, longitude: 38.7684, pricePerDay: 6500, description: "A tough double-cab pickup for rough roads and longer journeys. Diesel, 4x4.", status: "approved", popularity: 74, photoIdx: 4 },
-  { id: "car-suzuki-sarbet", ownerId: DEMO_IDS.ownerDawit, make: "Suzuki", model: "Swift", year: 2018, transmission: "Manual", fuel: "Petrol", seats: 5, neighbourhood: "Sarbet", latitude: 8.9951, longitude: 38.7262, pricePerDay: 2000, description: "Economical hatchback with low running costs. Good for daily errands and city driving.", status: "approved", popularity: 55, photoIdx: 5 },
-  { id: "car-hyundai-megenagna", ownerId: DEMO_IDS.ownerDawit, make: "Hyundai", model: "Tucson", year: 2022, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Megenagna", latitude: 9.0204, longitude: 38.7989, pricePerDay: 5800, description: "Modern crossover with a smooth ride and a great sound system. Pickup near Megenagna roundabout.", status: "approved", popularity: 80, photoIdx: 6 },
-  { id: "car-vwpolo-gerji", ownerId: DEMO_IDS.ownerSelam, make: "Volkswagen", model: "Polo", year: 2019, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Gerji", latitude: 9.0003, longitude: 38.807, pricePerDay: 3100, description: "Compact and comfortable with a quiet cabin. Automatic gearbox for stress-free traffic.", status: "approved", popularity: 47, photoIdx: 1 },
-  { id: "car-minibus-lideta", ownerId: DEMO_IDS.ownerDawit, make: "Toyota", model: "HiAce", year: 2016, transmission: "Manual", fuel: "Diesel", seats: 12, neighbourhood: "Lideta", latitude: 9.0106, longitude: 38.7283, pricePerDay: 7500, description: "Spacious 12-seat van for family events, tours and group travel.", status: "approved", popularity: 39, photoIdx: 2 },
-  { id: "car-yaris-ayat", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "Yaris", year: 2021, transmission: "Automatic", fuel: "Hybrid", seats: 5, neighbourhood: "Ayat", latitude: 9.0228, longitude: 38.8662, pricePerDay: 3300, description: "Newly listed hybrid hatchback waiting for admin approval.", status: "pending", popularity: 0, photoIdx: 3 },
-  { id: "car-kia-oldairport", ownerId: DEMO_IDS.ownerDawit, make: "Kia", model: "Picanto", year: 2015, transmission: "Manual", fuel: "Petrol", seats: 4, neighbourhood: "Old Airport", latitude: 8.989, longitude: 38.73, pricePerDay: 1500, description: "Older budget hatchback. Listing was rejected for missing photos.", status: "rejected", popularity: 0, photoIdx: 4 },
-  { id: "car-nissan-bole-inactive", ownerId: DEMO_IDS.ownerSelam, make: "Nissan", model: "Patrol", year: 2014, transmission: "Automatic", fuel: "Petrol", seats: 7, neighbourhood: "Bole", latitude: 8.9921, longitude: 38.7701, pricePerDay: 8200, description: "Large 7-seat SUV, temporarily deactivated by its owner.", status: "inactive", popularity: 20, photoIdx: 5 },
-  { id: "car-draft-mercedes", ownerId: DEMO_IDS.ownerDawit, make: "Mercedes-Benz", model: "C200", year: 2018, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Kazanchis", latitude: 9.0125, longitude: 38.7721, pricePerDay: 9000, description: "Draft listing, not yet submitted for review.", status: "draft", popularity: 0, photoIdx: 6 },
+  { id: "car-corolla-bole", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "Corolla", year: 2020, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Bole", latitude: 8.9806, longitude: 38.7578, pricePerDay: 2800, description: "A reliable, fuel-efficient city sedan. Clean interior, working AC, and easy pickup near Bole Medhanialem.", status: "approved", popularity: 92, unavailableOffsets: [40, 41] },
+  { id: "car-vitz-piassa", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "Vitz", year: 2017, transmission: "Manual", fuel: "Petrol", seats: 4, neighbourhood: "Piassa", latitude: 9.0345, longitude: 38.7469, pricePerDay: 1800, description: "A small, nimble hatchback that is easy to park in the old city. Great for tight streets and short trips.", status: "approved", popularity: 61 },
+  { id: "car-rav4-cmc", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "RAV4", year: 2021, transmission: "Automatic", fuel: "Hybrid", seats: 5, neighbourhood: "CMC", latitude: 9.0189, longitude: 38.8124, pricePerDay: 5200, description: "Comfortable hybrid SUV with plenty of boot space, ideal for weekend trips out of the city.", status: "approved", popularity: 88 },
+  { id: "car-hilux-kazanchis", ownerId: DEMO_IDS.ownerDawit, make: "Toyota", model: "Hilux", year: 2019, transmission: "Manual", fuel: "Diesel", seats: 5, neighbourhood: "Kazanchis", latitude: 9.0107, longitude: 38.7684, pricePerDay: 6500, description: "A tough double-cab pickup for rough roads and longer journeys. Diesel, 4x4.", status: "approved", popularity: 74 },
+  { id: "car-suzuki-sarbet", ownerId: DEMO_IDS.ownerDawit, make: "Suzuki", model: "Swift", year: 2018, transmission: "Manual", fuel: "Petrol", seats: 5, neighbourhood: "Sarbet", latitude: 8.9951, longitude: 38.7262, pricePerDay: 2000, description: "Economical hatchback with low running costs. Good for daily errands and city driving.", status: "approved", popularity: 55 },
+  { id: "car-hyundai-megenagna", ownerId: DEMO_IDS.ownerDawit, make: "Hyundai", model: "Tucson", year: 2022, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Megenagna", latitude: 9.0204, longitude: 38.7989, pricePerDay: 5800, description: "Modern crossover with a smooth ride and a great sound system. Pickup near Megenagna roundabout.", status: "approved", popularity: 80 },
+  { id: "car-vwpolo-gerji", ownerId: DEMO_IDS.ownerSelam, make: "Volkswagen", model: "Polo", year: 2019, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Gerji", latitude: 9.0003, longitude: 38.807, pricePerDay: 3100, description: "Compact and comfortable with a quiet cabin. Automatic gearbox for stress-free traffic.", status: "approved", popularity: 47 },
+  { id: "car-minibus-lideta", ownerId: DEMO_IDS.ownerDawit, make: "Toyota", model: "HiAce", year: 2016, transmission: "Manual", fuel: "Diesel", seats: 12, neighbourhood: "Lideta", latitude: 9.0106, longitude: 38.7283, pricePerDay: 7500, description: "Spacious 12-seat van for family events, tours and group travel.", status: "approved", popularity: 39 },
+  { id: "car-yaris-ayat", ownerId: DEMO_IDS.ownerSelam, make: "Toyota", model: "Yaris", year: 2021, transmission: "Automatic", fuel: "Hybrid", seats: 5, neighbourhood: "Ayat", latitude: 9.0228, longitude: 38.8662, pricePerDay: 3300, description: "Newly listed hybrid hatchback waiting for admin approval.", status: "pending", popularity: 0 },
+  { id: "car-kia-oldairport", ownerId: DEMO_IDS.ownerDawit, make: "Kia", model: "Picanto", year: 2015, transmission: "Manual", fuel: "Petrol", seats: 4, neighbourhood: "Old Airport", latitude: 8.989, longitude: 38.73, pricePerDay: 1500, description: "Older budget hatchback. Listing was rejected for missing photos.", status: "rejected", popularity: 0 },
+  { id: "car-nissan-bole-inactive", ownerId: DEMO_IDS.ownerSelam, make: "Nissan", model: "Patrol", year: 2014, transmission: "Automatic", fuel: "Petrol", seats: 7, neighbourhood: "Bole", latitude: 8.9921, longitude: 38.7701, pricePerDay: 8200, description: "Large 7-seat SUV, temporarily deactivated by its owner.", status: "inactive", popularity: 20 },
+  { id: "car-draft-mercedes", ownerId: DEMO_IDS.ownerDawit, make: "Mercedes-Benz", model: "C200", year: 2018, transmission: "Automatic", fuel: "Petrol", seats: 5, neighbourhood: "Kazanchis", latitude: 9.0125, longitude: 38.7721, pricePerDay: 9000, description: "Draft listing, not yet submitted for review.", status: "draft", popularity: 0 },
 ];
 
 export function seedCars(now = new Date()): Car[] {
   const today = todayISO(now);
-  return CARS.map(({ photoIdx, unavailableOffsets, ...c }, i) => ({
+  return CARS.map(({ unavailableOffsets, ...c }, i) => ({
     ...c,
     city: "Addis Ababa",
-    photos: [`/cars/car-${photoIdx}.svg`, "/cars/interior.svg"],
+    // One image per listing, named after the car id. To use a real photo, add public/cars/<car-id>.jpg and change CAR_PHOTO_EXT.
+    photos: [`/cars/${c.id}.svg`],
     unavailableDates: (unavailableOffsets ?? []).map((o) => addDays(today, o)),
     createdAt: new Date(now.getTime() - (60 - i * 3) * 86_400_000).toISOString(),
   }));
