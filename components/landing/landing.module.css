@@ -1,0 +1,381 @@
+/* ---------- Hero ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 48px var(--page-gutter) 40px;
+}
+.heroComposition {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+}
+.heroCopy {
+  width: 525px;
+  flex-shrink: 0;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.heroTitle {
+  font-size: 64px;
+  line-height: 1.06;
+  font-weight: 400;
+}
+.heroBody {
+  font-size: 18px;
+  color: var(--c-muted);
+}
+.rating {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--c-brand);
+}
+.journey {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 445px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.journeyPhoto {
+  position: absolute;
+  inset: 0;
+}
+.destinationLabel {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  padding: 12px;
+  background: #fff;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.search {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-search);
+}
+.search > div {
+  flex: 1;
+  min-width: 0;
+}
+.search > button {
+  align-self: flex-start;
+}
+.disclosure {
+  font-size: 13px;
+  color: var(--c-muted);
+}
+
+/* ---------- Featured cars ---------- */
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 48px var(--page-gutter);
+}
+.sectionTitle {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.sectionLead {
+  font-size: 16px;
+  color: var(--c-muted);
+}
+.carGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.carCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.carCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(20, 61, 45, 0.1);
+}
+.carPhoto {
+  height: 210px;
+  border-radius: var(--r-md);
+}
+.carBody {
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--c-muted);
+}
+.carName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+.carPrice {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+
+/* ---------- How it works ---------- */
+.how {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 64px var(--page-gutter);
+  background: var(--c-surface-alt);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.step h3 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.stepNum {
+  color: var(--c-brand);
+  margin-right: 0.6em;
+}
+.step p {
+  font-size: 16px;
+  color: var(--c-muted);
+}
+.story {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.storyPhoto {
+  width: 520px;
+  height: 320px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+}
+.storyCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* ---------- Trust ---------- */
+.trust {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 64px var(--page-gutter);
+}
+.trustGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.trustGrid h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.trustGrid p {
+  color: var(--c-muted);
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.stories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.reviewHead {
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.reviewer {
+  font-size: 16px;
+  color: var(--c-ink);
+}
+.stars {
+  font-size: 13px;
+  color: var(--c-brand);
+  margin-left: 1em;
+}
+.reviewMeta {
+  font-size: 13px;
+  color: var(--c-muted);
+}
+
+/* ---------- Host invitation + FAQ + final CTA ---------- */
+.next {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 48px var(--page-gutter);
+}
+.owner {
+  display: flex;
+  gap: 32px;
+  padding: 48px;
+  background: var(--c-brand);
+  border-radius: var(--r-md);
+  color: #fff;
+}
+.ownerCopy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.ownerEyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-on-brand-soft);
+}
+.ownerTitle {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #fff;
+}
+.ownerBody {
+  font-size: 16px;
+  color: var(--c-on-brand-body);
+}
+.ownerNote {
+  font-size: 13px;
+  color: var(--c-on-brand-body);
+}
+.ownerPhoto {
+  width: 480px;
+  height: 300px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  background: #fff;
+}
+
+.faqTitle {
+  font-size: 28px;
+  font-weight: 600;
+}
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.faqItem summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+.faqItem summary::after {
+  content: "+";
+  color: var(--c-muted);
+}
+.faqItem[open] summary::after {
+  content: "−";
+}
+.faqItem p {
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--c-muted);
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  background: var(--c-mint);
+  border-radius: var(--r-md);
+  text-align: center;
+}
+.final h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .heroComposition {
+    flex-direction: column;
+  }
+  .heroCopy {
+    width: 100%;
+  }
+  .journey {
+    width: 100%;
+    height: 320px;
+    flex: none;
+  }
+  .search {
+    flex-wrap: wrap;
+  }
+  .search > div {
+    flex: 1 1 200px;
+  }
+  .carGrid,
+  .trustGrid,
+  .stories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .story,
+  .owner {
+    flex-direction: column;
+  }
+  .storyPhoto,
+  .ownerPhoto {
+    width: 100%;
+  }
+}
+@media (max-width: 720px) {
+  .heroTitle {
+    font-size: 40px;
+  }
+  .sectionTitle {
+    font-size: 28px;
+  }
+  .carGrid,
+  .trustGrid,
+  .stories,
+  .steps,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+  .owner {
+    padding: 28px 20px;
+  }
+  .ownerTitle {
+    font-size: 30px;
+  }
+}
