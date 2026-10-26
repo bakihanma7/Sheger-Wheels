@@ -28,7 +28,7 @@ export function rangesOverlap(aStart: string, aEnd: string, bStart: string, bEnd
   return aStart < bEnd && bStart < aEnd;
 }
 
-export function isCarPublic(car: Car | null | undefined): car is Car {
+export function isCarPublic(car: Car | null | undefined): boolean {
   return !!car && car.status === "approved";
 }
 
@@ -151,7 +151,7 @@ export interface BookingRequestInput {
 
 export function validateBookingRequest(input: BookingRequestInput): Result<{ car: Car; days: number }> {
   const car = getCar(input.carId);
-  if (!isCarPublic(car)) return fail("That car isn't available to book.");
+  if (!car || !isCarPublic(car)) return fail("That car isn't available to book.");
   const dateErr = validateDates(input.startDate, input.endDate);
   if (dateErr) return fail(dateErr);
   const reason = unavailableReason(car, input.startDate, input.endDate, getBookings());
